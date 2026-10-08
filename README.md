@@ -156,9 +156,9 @@ document.getElementById("avatarUsuario").textContent = usuario.charAt(0).toUpper
 5. Agregamos el botón del ojo para mostrar u ocultar la contraseña.
 6. Si todo es válido, guardamos el correo con `sessionStorage.setItem` y redirigimos a `index.html`.
 
-![Login](img/01-login.png)
+![Login](img/login.png)
 
-![Login con errores de validación](img/02-login-errores.png)
+![Login con errores](img/loginconerrores.png)
 
 ### Paso 3 · El sidebar (`index.html` + `app.js`)
 
@@ -168,10 +168,9 @@ document.getElementById("avatarUsuario").textContent = usuario.charAt(0).toUpper
 4. En pantallas menores a 992 px el sidebar inicia oculto y aparece un fondo oscuro (`backdrop-nav`) que lo cierra al tocarlo.
 5. Con atributos `data-vista` cambiamos entre las secciones **Inicio** y **Captura** sin recargar la página.
 
-![Sidebar abierto](img/04-sidebar.png)
+![Sidebar abierto](img/sidebar%20abierto.png)
 
-![Submenú Usuarios → Captura](img/05-submenu-captura.png)
-
+![Submenú Captura](img/submenu%20usuarios.png)
 ### Paso 4 · El navbar con el usuario
 
 1. Creamos el `<header class="topbar">` con el botón hamburguesa a la izquierda y un **dropdown** de Bootstrap a la derecha.
@@ -179,9 +178,9 @@ document.getElementById("avatarUsuario").textContent = usuario.charAt(0).toUpper
 3. En `app.js` leemos `sessionStorage.getItem("usuario")` y llenamos esos dos elementos: el correo completo y su **primera letra** en mayúscula como avatar.
 4. Dentro del dropdown agregamos **Salir del sistema**, que ejecuta `sessionStorage.removeItem("usuario")` y regresa a `login.html`.
 
-![Navbar con usuario](img/03-navbar-usuario.png)
+![Navbar con usuario](img/navbar%20con%20usuario.png)
 
-![Menú desplegable Salir del sistema](img/06-navbar-salir.png)
+![Salir del sistema](img/salirdelsistema.png)
 
 ### Paso 5 · El número de control
 
@@ -189,7 +188,7 @@ document.getElementById("avatarUsuario").textContent = usuario.charAt(0).toUpper
 2. Escuchamos el evento `input` y eliminamos cualquier carácter que no sea dígito: `value.replace(/\D/g, "")`, así solo se pueden escribir números.
 3. Al guardar, `validarNumeroControl()` comprueba con la expresión regular `/^\d{6}$/` que tenga **exactamente 6 dígitos**. Si no, el campo se marca en rojo con el mensaje de error.
 
-![Número de control inválido](img/07-numero-control-error.png)
+![Número de control inválido](img/numero%20de%20control%20invalido.png)
 
 ### Paso 6 · El modal de edad
 
@@ -198,9 +197,9 @@ document.getElementById("avatarUsuario").textContent = usuario.charAt(0).toUpper
 3. Con esa información, `app.js` cambia el ícono (✔ o ❗), el título (*Es mayor de edad* / *Es menor de edad*) y el texto (*"Nombre tiene X años."*), y abre el modal con `new bootstrap.Modal(...).show()`.
 4. Además, el alumno se agrega a la tabla **Alumnos registrados** con una etiqueta de su situación.
 
-![Modal mayor de edad](img/08-modal-mayor.png)
+![Modal mayor de edad](img/modal%20mayor%20de%20edad.png)
 
-![Modal menor de edad](img/09-modal-menor.png)
+![Modal menor de edad](img/modal%20menor%20de%20edad.png)
 
 ---
 
@@ -210,16 +209,14 @@ Flujo completo funcionando, de principio a fin:
 
 | # | Pantalla | Captura |
 |---|---|---|
-| 1 | Login vacío | ![](img/01-login.png) |
-| 2 | Login con errores de validación | ![](img/02-login-errores.png) |
-| 3 | Sistema con el usuario en el navbar | ![](img/03-navbar-usuario.png) |
-| 4 | Sidebar con submenú **Usuarios → Captura** | ![](img/05-submenu-captura.png) |
-| 5 | Vista de captura (formularios de usuario y alumno) | ![](img/10-captura.png) |
-| 6 | Alumno con modal de **mayor de edad** | ![](img/08-modal-mayor.png) |
-| 7 | Alumno con modal de **menor de edad** | ![](img/09-modal-menor.png) |
-| 8 | Tablas de alumnos y usuarios registrados | ![](img/11-tablas.png) |
-| 9 | **Salir del sistema** y regreso al login | ![](img/06-navbar-salir.png) |
-
+| 1 | Login vacío | ![](img/login.png) |
+| 2 | Login con errores de validación | ![](img/loginconerrores.png) |
+| 3 | Sistema con el usuario en el navbar | ![](img/navbar%20con%20usuario.png) |
+| 4 | Sidebar con submenú **Usuarios → Captura** | ![](img/submenu%20usuarios.png) |
+| 5 | Alumno con número de control inválido | ![](img/numero%20de%20control%20invalido.png) |
+| 6 | Alumno con modal de **mayor de edad** | ![](img/modal%20mayor%20de%20edad.png) |
+| 7 | Alumno con modal de **menor de edad** | ![](img/modal%20menor%20de%20edad.png) |
+| 8 | **Salir del sistema** y regreso al login | ![](img/salirdelsistema.png) |
 ---
 
 ## 4. ▶️ Cómo usarlo
