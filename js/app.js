@@ -57,6 +57,21 @@ formUsuario.addEventListener("submit", (e) => {
   if (ok) {
     aviso.textContent = "Usuario «" + nombre.value.trim() + "» guardado correctamente.";
     aviso.hidden = false;
+
+    // Agregar a la tabla
+    document.getElementById("filaVaciaUsuario")?.remove();
+    const fila = document.createElement("tr");
+
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent = nombre.value.trim();
+
+    const tdCorreo = document.createElement("td");
+    tdCorreo.textContent = correo.value.trim();
+
+    fila.appendChild(tdNombre);
+    fila.appendChild(tdCorreo);
+    document.getElementById("tablaUsuarios").appendChild(fila);
+
     formUsuario.reset();
     formUsuario.querySelectorAll(".form-control").forEach((i) => i.classList.remove("is-valid"));
   } else {
