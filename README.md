@@ -54,31 +54,6 @@ Usamos **Bootstrap 5.3.3**, cargado por CDN (no hay que instalar nada):
 
 > `login.html` solo carga el CSS de Bootstrap porque no necesita componentes interactivos; `index.html` carga además el JS bundle.
 
-### 1.2 Cómo fluye el login hacia el sistema
-
-```mermaid
-flowchart TD
-    A[Abrir login.html] --> B{¿Ya hay sesión<br/>en sessionStorage?}
-    B -- Sí --> F
-    B -- No --> C[Capturar correo y contraseña]
-    C --> D{validarCorreo y<br/>validarPassword}
-    D -- Inválidos --> E[Mostrar errores por campo]
-    E --> C
-    D -- Válidos --> G[sessionStorage.setItem<br/>'usuario', correo]
-    G --> F[Redirigir a index.html]
-    F --> H{¿Existe 'usuario'<br/>en sessionStorage?}
-    H -- No --> A
-    H -- Sí --> I[Mostrar sistema:<br/>sidebar + navbar + captura]
-    I --> J[Clic en 'Salir del sistema']
-    J --> K[sessionStorage.removeItem<br/>'usuario'] --> A
-```
-
-En palabras:
-
-1. **`login.html`**: el usuario escribe correo y contraseña. Al enviar el formulario se validan con `validarCorreo()` y `validarPassword()` (de `utileria.js`). Si hay error, cada campo muestra su mensaje en rojo.
-2. Si todo es válido, `login.js` guarda el correo en `sessionStorage` y redirige a `index.html`.
-3. **`index.html`**: lo primero que hace `app.js` es revisar si existe la sesión. Si **no** existe, regresa a `login.html` (protección de la pantalla).
-4. Con sesión activa se muestra el sistema. En el navbar, **Salir del sistema** borra la sesión y vuelve al login.
 
 ### 1.3 Cómo se pasa el nombre de usuario del login al navbar
 
